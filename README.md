@@ -24,7 +24,7 @@ Web manajemen inventaris rumah tangga yang dirancang khusus untuk menekan angka 
 
 # Kebutuhan User Website FreshTrack
 
-1. Authentikasi
+1. Autentikasi
    - User bisa melakukan registrasi akun baru (Sign Up).
    - User bisa login menggunakan email dan password.
    - User bisa logout dari sistem (via ikon garis 3 di sidebar).
