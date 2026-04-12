@@ -13,7 +13,7 @@ Web manajemen inventaris rumah tangga yang dirancang khusus untuk menekan angka 
 1. Project berbasis website
 2. Project dibuat dengan:
    - Frontend dengan HTML CSS
-   - Backend dengan PHP
+   - Backend dengan JavaScript PHP
    - Database dengan MySQL
    - Deploy dengan Vercel
 3. Bentuk website seperti dashboard admin
