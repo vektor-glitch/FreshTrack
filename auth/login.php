@@ -26,6 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $user['password_hash']) || $password === $user['password_hash']) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
+
+                if (isset($_POST['remember-me'])) {
+                    $token = bin2hex(random_bytes(32));
+                    $hashed_token = hash('sha256', $token);
+                    $expiry = date('Y-m-d H:i:s', time() + (30 * 24 * 60 * 60)); // 30 days
+
+                    $update_stmt = $connection->prepare("UPDATE users SET remember_token = ?, remember_token_expiry = ? WHERE id = ?");
+                    $update_stmt->bind_param("sss", $hashed_token, $expiry, $user['id']);
+                    $update_stmt->execute();
+
+                    setcookie('remember_me', $user['id'] . ':' . $token, time() + (30 * 24 * 60 * 60), "/");
+                }
+
                 header("Location: /Kuis-ResponsiPWD/FreshTrack/pages/dashboard.php");
                 exit();
             } else {
@@ -101,7 +114,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
             <div class="mt-1 relative">
-              <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 pr-10" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+              <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500" placeholder="Enter your password" />
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600">
+              <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900">Remember me</label>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="flex w-full justify-center rounded-xl bg-emerald-600 px-3 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600">Sign in</button>
+          </div>
+        </form>
               <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-gray-600 transition-colors">
                 <i class="fas fa-eye" id="togglePassword"></i>
               </button>
