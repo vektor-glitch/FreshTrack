@@ -114,42 +114,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
             <div class="mt-1 relative">
-              <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500" placeholder="Enter your password" />
+              <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-3 pr-10 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500" placeholder="Enter your password" />
+              <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fas fa-eye"></i>
+              </button>
             </div>
           </div>
 
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600">
-              <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900">Remember me</label>
-            </div>
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600">
+            <label for="remember-me" class="ml-3 block text-sm text-gray-700">Remember me</label>
           </div>
 
           <div>
             <button type="submit" class="flex w-full justify-center rounded-xl bg-emerald-600 px-3 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600">Sign in</button>
           </div>
         </form>
-              <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-gray-600 transition-colors">
-                <i class="fas fa-eye" id="togglePassword"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between mt-2">
-            <div class="flex items-center gap-2">
-              <input id="remember-me" type="checkbox" name="remember-me" class="size-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600" />
-              <label for="remember-me" class="block text-sm text-gray-600">Remember me</label>
-            </div>
-            <div class="text-sm">
-              <a href="#" class="font-medium text-emerald-600 hover:text-emerald-500 transition-colors">Forgot password?</a>
-            </div>
-          </div>
-
-          <div class="pt-2">
-            <button type="submit" class="flex w-full justify-center items-center gap-2 rounded-xl bg-emerald-500 px-4 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 transition-all">
-              <i class="fas fa-sign-in-alt"></i> Sign In to Dashboard
-            </button>
-          </div>
         </form>
 
         <p class="mt-8 text-center text-sm text-gray-500">
