@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 $base = '/Kuis-ResponsiPWD/FreshTrack';
 ?>
 
-<!-- Mobile Sidebar Backdrop & Panel (Hidden by default, toggled via JS) -->
+<!-- Mobile Sidebar Backdrop & Panel -->
 <div id="mobile-sidebar" class="relative z-50 lg:hidden hidden" role="dialog" aria-modal="true">
   <div class="fixed inset-0 bg-gray-900/80 transition-opacity"></div>
   <div class="fixed inset-0 flex">
@@ -113,7 +113,7 @@ $base = '/Kuis-ResponsiPWD/FreshTrack';
   </div>
 </div>
 
-<!-- Mobile top navigation bar (only visible on mobile) -->
+<!-- Mobile top navigation bar -->
 <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-emerald-600 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
   <button type="button" id="open-sidebar-btn" class="-m-2.5 p-2.5 text-emerald-100 hover:text-white">
     <span class="sr-only">Open sidebar</span>

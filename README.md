@@ -15,7 +15,7 @@ Web manajemen inventaris rumah tangga yang dirancang khusus untuk menekan angka 
    - Frontend dengan HTML CSS
    - Backend dengan JavaScript PHP
    - Database dengan MySQL
-   - Deploy dengan Vercel
+   - Deploy dengan Infinityfree
 3. Bentuk website seperti dashboard admin
 4. ada navbar dan sidebar
 5. navbar dapat berisi komponen seperti search, icon lonceng untuk notifikasi, profile, dll
