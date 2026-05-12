@@ -1,109 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/output.css">
-    <title>Index FreshTrack</title>
+    <title>FreshTrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 </head>
-<body>  
-<nav class="relative bg-white shadow-sm dark:bg-gray-800/50 dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 justify-between">
-      <div class="flex">
-        <div class="mr-2 -ml-2 flex items-center md:hidden">
-          <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-indigo-600 focus:outline-hidden focus:ring-inset dark:hover:bg-white/5 dark:hover:text-white dark:focus:ring-white">
-            <span class="absolute -inset-0.5"></span>
+<body class="bg-white text-gray-900 antialiased">
+    <!-- Navbar -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-gray-900/40 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5 flex items-center gap-2">
+            <span class="sr-only">FreshTrack</span>
+            <img class="h-10 w-auto" src="assets/Logo_FreshTrack.png" alt="FreshTrack" onerror="this.outerHTML='<span class=\'text-2xl font-bold text-white\'>FreshTrack</span>'">
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="flex lg:hidden">
+          <button type="button" id="mobile-menu-btn" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
             <span class="sr-only">Open main menu</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-              <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
-        <div class="flex shrink-0 items-center">
-          <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" class="h-8 w-auto dark:hidden" />
-          <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="h-8 w-auto not-dark:hidden" />
+
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="#" class="text-sm/6 font-semibold text-white hover:text-emerald-400 transition-colors">Home</a>
+          <a href="#features" class="text-sm/6 font-semibold text-white hover:text-emerald-400 transition-colors">Features</a>
+          <a href="#process" class="text-sm/6 font-semibold text-white hover:text-emerald-400 transition-colors">How It Works</a>
+          <a href="#testimonials" class="text-sm/6 font-semibold text-white hover:text-emerald-400 transition-colors">Testimonials</a>
+          <a href="#aboutus" class="text-sm/6 font-semibold text-white hover:text-emerald-400 transition-colors">About Us</a>
         </div>
-        <div class="hidden md:ml-6 md:flex md:space-x-8">
-          <!-- Current: "border-indigo-600 text-gray-900 dark:border-indigo-500 dark:text-white", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:border-white/20 dark:hover:text-white" -->
-          <a href="#" class="inline-flex items-center border-b-2 border-indigo-600 px-1 pt-1 text-sm font-medium text-gray-900 dark:border-indigo-500 dark:text-white">Dashboard</a>
-          <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:border-white/20 dark:hover:text-white">Team</a>
-          <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:border-white/20 dark:hover:text-white">Projects</a>
-          <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:border-white/20 dark:hover:text-white">Calendar</a>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="auth/login.php" class="rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition-all">START NOW!</a>
+        </div>
+      </nav>
+
+      <!-- Mobile menu (Extend Navbar) -->
+      <div class="lg:hidden hidden border-t border-white/10 bg-gray-900/90 backdrop-blur-md transition-all duration-300" id="mobile-menu">
+        <div class="space-y-1 px-6 pb-6 pt-2">
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 mobile-link">Home</a>
+          <a href="#features" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 mobile-link">Features</a>
+          <a href="#process" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 mobile-link">How It Works</a>
+          <a href="#testimonials" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 mobile-link">Testimonials</a>
+          <a href="#aboutus" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 mobile-link">About Us</a>
+          <a href="auth/login.php" class="block rounded-md px-3 py-2 text-base font-medium text-emerald-400 hover:bg-gray-800">START NOW!</a>
         </div>
       </div>
-      <div class="flex items-center">
-        <div class="shrink-0">
-          <button type="button" class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">
-            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-ml-0.5 size-5">
-              <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-            </svg>
-            New Job
-          </button>
-        </div>
-        <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
-          <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600 dark:hover:text-white dark:focus:outline-indigo-500">
-            <span class="absolute -inset-1.5"></span>
-            <span class="sr-only">View notifications</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-              <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
+    </header>
 
-          <!-- Profile dropdown -->
-          <el-dropdown class="relative ml-3">
-            <button class="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-indigo-500">
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">Open user menu</span>
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full bg-gray-100 outline -outline-offset-1 outline-black/5 dark:bg-gray-800 dark:outline-white/10" />
-            </button>
-
-            <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Your profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Sign out</a>
-            </el-menu>
-          </el-dropdown>
+    <main>
+      <!-- Hero section with Background Image -->
+      <div class="relative isolate min-h-screen flex items-center justify-center pt-14">
+        <!-- Background image -->
+        <img src="assets/hero-pic.jpg" alt="Fresh produce" class="absolute inset-0 -z-20 h-full w-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=2070&auto=format&fit=crop'">
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 -z-10 bg-gray-900/60 sm:bg-gray-900/70"></div>
+        
+        <div class="mx-auto max-w-4xl px-6 lg:px-8 text-center py-24 sm:py-32">
+            <span class="inline-block rounded-full bg-emerald-500/20 px-4 py-1 text-sm/6 font-semibold text-emerald-300 ring-1 ring-inset ring-emerald-500/30 mb-8 backdrop-blur-sm">🚀 Smart Grocery Tracker</span>
+            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg">Never Forget What's in Your Fridge Again.</h1>
+            <p class="mt-8 text-lg/8 font-medium text-gray-200 drop-shadow-md">The easiest way to manage your groceries. FreshTrack automatically sorts your food by expiration date and sends you smart reminders so you know exactly what to cook today.</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a href="auth/login.php" class="rounded-full bg-emerald-600 px-8 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition-all flex items-center gap-2">
+                <i class="fas fa-rocket"></i> Start Tracking Your Groceries
+              </a>
+              <a href="#features" class="text-sm/6 font-semibold text-white flex items-center gap-1 hover:text-emerald-300 transition-colors">Our Features <span aria-hidden="true">→</span></a>
+            </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <el-disclosure id="mobile-menu" hidden class="block md:hidden">
-    <div class="space-y-1 pt-2 pb-3">
-      <!-- Current: "bg-indigo-50 border-indigo-600 text-indigo-700 dark:border-indigo-500 dark:bg-indigo-600/10 dark:text-indigo-400", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white" -->
-      <a href="#" class="block border-l-4 border-indigo-600 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700 sm:pr-6 sm:pl-5 dark:border-indigo-500 dark:bg-indigo-600/10 dark:text-indigo-400">Dashboard</a>
-      <a href="#" class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800 sm:pr-6 sm:pl-5 dark:text-gray-300 dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white">Team</a>
-      <a href="#" class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800 sm:pr-6 sm:pl-5 dark:text-gray-300 dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white">Projects</a>
-      <a href="#" class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800 sm:pr-6 sm:pl-5 dark:text-gray-300 dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white">Calendar</a>
-    </div>
-    <div class="border-t border-gray-200 pt-4 pb-3 dark:border-white/10">
-      <div class="flex items-center px-4 sm:px-6">
-        <div class="shrink-0">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-10 rounded-full bg-gray-100 outline -outline-offset-1 outline-black/5 dark:bg-gray-800 dark:outline-white/10" />
+      <!-- Stats section -->
+      <div id="about" class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-2">
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">Tons of food wasted globally/year</dt>
+              <dd class="order-first text-4xl font-semibold tracking-tight text-emerald-600 sm:text-6xl">1.3B</dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">Average household food waste/year</dt>
+              <dd class="order-first text-4xl font-semibold tracking-tight text-emerald-600 sm:text-6xl">$1,500</dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">Food waste reduction with tracking</dt>
+              <dd class="order-first text-4xl font-semibold tracking-tight text-emerald-600 sm:text-6xl">40%</dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">To set up your digital pantry</dt>
+              <dd class="order-first text-4xl font-semibold tracking-tight text-emerald-600 sm:text-6xl">5min</dd>
+            </div>
+          </dl>
         </div>
-        <div class="ml-3">
-          <div class="text-base font-medium text-gray-800 dark:text-white">Tom Cook</div>
-          <div class="text-sm font-medium text-gray-500 dark:text-gray-400">tom@example.com</div>
+      </div>
+
+      <!-- Feature section 2 (Fitur Unggulan) -->
+      <div id="features" class="bg-gray-50 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Everything Your Kitchen Needs</h2>
+            <p class="mt-6 text-lg/8 text-gray-600">From tracking to recipes, FreshTrack is your complete food management companion.</p>
+          </div>
+          <div class="mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24">
+            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-8 lg:max-w-none lg:grid-cols-3">
+              <!-- Card 1 -->
+              <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 animate-slide-up delay-100">
+                <dt class="text-xl font-semibold text-gray-900">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-emerald-100">
+                    <i class="fas fa-box text-emerald-600"></i>
+                  </div>
+                  Smart Inventory
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">Add, edit, and organize all your food items by category. Full CRUD control over your kitchen pantry.</dd>
+              </div>
+              
+              <!-- Card 2 (Highlighted) -->
+              <div class="flex flex-col bg-emerald-500 rounded-2xl shadow-md border border-emerald-500 p-8 transform scale-105 animate-slide-up delay-200">
+                <dt class="text-xl font-semibold text-white">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-emerald-400/30 ring-1 ring-white/20">
+                    <i class="fas fa-bell text-white"></i>
+                  </div>
+                  Expiry Reminders
+                </dt>
+                <dd class="mt-2 text-base/7 text-emerald-50">Get alerts 1, 3, or 7 days before food expires. Never let anything go bad unnoticed.</dd>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 animate-slide-up delay-300">
+                <dt class="text-xl font-semibold text-gray-900">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-orange-100">
+                    <i class="fas fa-utensils text-orange-600"></i>
+                  </div>
+                  Quick Recipes
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">Discover fast recipes for ingredients nearing expiry. Turn expiring food into delicious meals.</dd>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 animate-slide-up delay-100">
+                <dt class="text-xl font-semibold text-gray-900">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-blue-100">
+                    <i class="fas fa-chart-line text-blue-600"></i>
+                  </div>
+                  Waste Tracking
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">Monitor your food waste patterns over time and see how much money you've saved.</dd>
+              </div>
+
+              <!-- Card 5 -->
+              <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 animate-slide-up delay-200">
+                <dt class="text-xl font-semibold text-gray-900">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-purple-100">
+                    <i class="fas fa-tags text-purple-600"></i>
+                  </div>
+                  Category System
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">Automatically group your items into meats, vegetables, dairy, and pantry staples.</dd>
+              </div>
+
+              <!-- Card 6 -->
+              <div class="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 animate-slide-up delay-300">
+                <dt class="text-xl font-semibold text-gray-900">
+                  <div class="mb-4 flex size-12 items-center justify-center rounded-xl bg-teal-100">
+                    <i class="fas fa-lock text-teal-600"></i>
+                  </div>
+                  Private & Secure
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">Your personal inventory data is stored securely and is only accessible by you.</dd>
+              </div>
+            </dl>
+          </div>
         </div>
-        <button type="button" class="relative ml-auto shrink-0 rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600 dark:hover:text-white dark:focus:outline-indigo-500">
-          <span class="absolute -inset-1.5"></span>
-          <span class="sr-only">View notifications</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-            <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
+      </div>
+
+      <!-- Process section -->
+      <div id="process" class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">Simple Process</span>
+          <h2 class="mt-4 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Ready in 3 Simple Steps</h2>
+          
+          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+              <div class="flex flex-col items-center text-center animate-slide-up delay-100">
+                <div class="mb-6 flex size-16 items-center justify-center rounded-2xl bg-emerald-500 shadow-md shadow-emerald-500/20">
+                  <span class="text-2xl font-bold text-white">1</span>
+                </div>
+                <dt class="text-xl font-semibold text-gray-900">Create Account</dt>
+                <dd class="mt-2 flex flex-auto flex-col text-base/7 text-gray-600">
+                  <p class="flex-auto">Sign up in seconds, completely free. Your private kitchen dashboard awaits.</p>
+                </dd>
+              </div>
+              <div class="flex flex-col items-center text-center animate-slide-up delay-200">
+                <div class="mb-6 flex size-16 items-center justify-center rounded-2xl bg-emerald-500 shadow-md shadow-emerald-500/20">
+                  <span class="text-2xl font-bold text-white">2</span>
+                </div>
+                <dt class="text-xl font-semibold text-gray-900">Add Your Groceries</dt>
+                <dd class="mt-2 flex flex-auto flex-col text-base/7 text-gray-600">
+                  <p class="flex-auto">Input each item with its name, category, and expiration date in under a minute.</p>
+                </dd>
+              </div>
+              <div class="flex flex-col items-center text-center animate-slide-up delay-300">
+                <div class="mb-6 flex size-16 items-center justify-center rounded-2xl bg-emerald-500 shadow-md shadow-emerald-500/20">
+                  <span class="text-2xl font-bold text-white">3</span>
+                </div>
+                <dt class="text-xl font-semibold text-gray-900">Never Waste Again</dt>
+                <dd class="mt-2 flex flex-auto flex-col text-base/7 text-gray-600">
+                  <p class="flex-auto">Receive smart alerts before food expires and discover recipes to use it all up.</p>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div id="testimonials" class="bg-gray-900 py-24 sm:py-32 border-t border-gray-800">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+            <h2 class="text-base/8 font-semibold text-emerald-400">Testimonials</h2>
+            <p class="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">What They Say</p>
+            <p class="mt-6 text-lg/8 text-gray-300">FreshTrack users share their experiences saving food from the trash.</p>
+          </div>
+          <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-white sm:mt-20 sm:grid-cols-3 sm:gap-y-16 lg:mx-0 lg:max-w-none">
+            <div class="flex flex-col gap-y-3 border-l-2 border-emerald-500 pl-6 animate-slide-up delay-100">
+              <dt class="text-sm/6 italic">"Since using FreshTrack, my home food waste has dropped drastically. I always know what to cook first!"</dt>
+              <dd class="order-first text-lg font-semibold tracking-tight text-emerald-400">Sarah, Housewife</dd>
+            </div>
+            <div class="flex flex-col gap-y-3 border-l-2 border-emerald-500 pl-6 animate-slide-up delay-200">
+              <dt class="text-sm/6 italic">"As a student, I often forget food in the fridge until it goes bad. FreshTrack helps me save my allowance!"</dt>
+              <dd class="order-first text-lg font-semibold tracking-tight text-emerald-400">Dimas, Student</dd>
+            </div>
+            <div class="flex flex-col gap-y-3 border-l-2 border-emerald-500 pl-6 animate-slide-up delay-300">
+              <dt class="text-sm/6 italic">"The quick recipe feature is so useful! I get cooking ideas from ingredients that are almost expired."</dt>
+              <dd class="order-first text-lg font-semibold tracking-tight text-emerald-400">Rina, Food Vendor</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- CTA section -->
+      <div class="relative isolate px-6 py-32 sm:py-40 lg:px-8 bg-emerald-900 overflow-hidden border-t border-emerald-800">
+        <svg aria-hidden="true" class="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-emerald-800">
+          <defs>
+            <pattern id="cta-pattern" width="200" height="200" x="50%" y="0" patternUnits="userSpaceOnUse">
+              <path d="M.5 200V.5H200" fill="none" />
+            </pattern>
+          </defs>
+          <svg x="50%" y="0" class="overflow-visible fill-emerald-800/50">
+            <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z" stroke-width="0" />
           </svg>
-        </button>
+          <rect width="100%" height="100%" fill="url(#cta-pattern)" stroke-width="0" />
+        </svg>
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Start Now Free!</h2>
+          <p class="mx-auto mt-6 max-w-xl text-lg/8 text-emerald-100">FreshTrack is a household inventory management web application specifically designed to reduce food waste at the family level.</p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="auth/login.php" class="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-emerald-600 shadow-sm hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition-all">Join Now</a>
+          </div>
+        </div>
       </div>
-      <div class="mt-3 space-y-1">
-        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">Your profile</a>
-        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">Settings</a>
-        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">Sign out</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white" id="aboutus">
+      <div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div class="space-y-8">
+            <img src="assets/Logo_FreshTrack.png" alt="FreshTrack" class="h-9" onerror="this.outerHTML='<span class=\'text-2xl font-bold text-emerald-600\'>FreshTrack</span>'" />
+            <p class="text-sm/6 text-balance text-gray-600">FreshTrack is a household inventory management web application specifically designed to reduce food waste at the family level.</p>
+            <div class="flex gap-x-6">
+              <a href="https://www.instagram.com/vctrswrld" class="text-gray-600 hover:text-emerald-600">
+                <span class="sr-only">Instagram</span>
+                <i class="fab fa-instagram size-6 text-xl"></i>
+              </a>
+              <a href="https://x.com/UGMYogyakarta" class="text-gray-600 hover:text-emerald-600">
+                <span class="sr-only">X</span>
+                <i class="fab fa-twitter size-6 text-xl"></i>
+              </a>
+              <a href="https://www.youtube.com/@Vctrswrld" class="text-gray-600 hover:text-emerald-600">
+                <span class="sr-only">YouTube</span>
+                <i class="fab fa-youtube size-6 text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div class="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 class="text-sm/6 font-semibold text-gray-900">Features</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Smart Inventory</a></li>
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Expiry Reminder</a></li>
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Quick Recipes</a></li>
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Waste Tracking</a></li>
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Category System</a></li>
+                  <li><a href="#features" class="text-sm/6 text-gray-600 hover:text-emerald-600">Private & Secure</a></li>
+                </ul>
+              </div>
+              <div class="mt-10 md:mt-0">
+                <h3 class="text-sm/6 font-semibold text-gray-900">Support</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li><a href="wa.link/szvu83" class="text-sm/6 text-gray-600 hover:text-emerald-600">Help Center</a></li>
+                  <li><a href="#process" class="text-sm/6 text-gray-600 hover:text-emerald-600">User Guide</a></li>
+                  <li><a href="wa.link/4o7bf8" class="text-sm/6 text-gray-600 hover:text-emerald-600">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 class="text-sm/6 font-semibold text-gray-900">Company</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li><a href="#aboutus" class="text-sm/6 text-gray-600 hover:text-emerald-600">About Us</a></li>
+                  <li><a href="#" class="text-sm/6 text-gray-600 hover:text-emerald-600">Blog</a></li>
+                  <li><a href="#" class="text-sm/6 text-gray-600 hover:text-emerald-600">Careers</a></li>
+                </ul>
+              </div>
+              <div class="mt-10 md:mt-0">
+                <h3 class="text-sm/6 font-semibold text-gray-900">Legal</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li><a href="#" class="text-sm/6 text-gray-600 hover:text-emerald-600">Terms & Conditions</a></li>
+                  <li><a href="#" class="text-sm/6 text-gray-600 hover:text-emerald-600">Privacy Policy</a></li>
+                  <li><a href="#" class="text-sm/6 text-gray-600 hover:text-emerald-600">License</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+          <p class="text-sm/6 text-gray-600">&copy; 2026 FreshTrack. Reduce food waste starting from your kitchen.</p>
+        </div>
       </div>
-    </div>
-  </el-disclosure>
-</nav>
+    </footer>
+
+    <script src="js/main.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

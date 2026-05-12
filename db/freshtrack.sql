@@ -192,8 +192,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password_hash`, `email`, `email_notif`, `reminder_day`, `created_at`, `updated_at`) VALUES
-('89ecece8-362c-11f1-a656-fc702eba7aae', 'Vektor', 'vektordhaf1812', 'vektorino12@gmail.com', 1, 7, '2026-04-12 05:00:36', '2026-04-12 05:00:36'),
-('91ac17d0-362c-11f1-a656-fc702eba7aae', 'Lintang', 'lintangkin123', 'lintangkinasih80@gmail.com', 1, 3, '2026-04-12 05:00:44', '2026-04-12 05:00:44');
+('89ecece8-362c-11f1-a656-fc702eba7aae', 'Vektor', '$2y$10$wWyDZ9v9LGZOtzrYL2V.sOlno4fa0pXy00xoAsFpNNhGSs9N1T2gy', 'vektorino12@gmail.com', 1, 7, '2026-04-12 05:00:36', '2026-04-12 05:00:36'),
+('91ac17d0-362c-11f1-a656-fc702eba7aae', 'Lintang', '$2y$10$6PcRiuCKwgrdt4/UF/mmcumvUKmfiODzjjUYEgNdo0qecIivV1wUm', 'lintangkinasih80@gmail.com', 1, 3, '2026-04-12 05:00:44', '2026-04-12 05:00:44');
 
 --
 -- Indexes for dumped tables
