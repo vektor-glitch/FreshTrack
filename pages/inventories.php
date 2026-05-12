@@ -5,11 +5,11 @@ include __DIR__ . '/../config/connection.php';
 $user_id = $_SESSION['user_id'];
 $page_title = 'Bahan Makanan';
 
-// Get categories
+// Ambil semua kategori bahan makanan dari database
 $cats = $connection->query("SELECT * FROM categories ORDER BY nama_categories");
 $categories = $cats->fetch_all(MYSQLI_ASSOC);
 
-// Filter by category
+// Filter berdasarkan kategori yang dipilih user
 $filter = $_GET['category'] ?? 'all';
 $query = "SELECT i.*, c.nama_categories, c.icon,
           DATEDIFF(i.tanggal_kadaluarsa, CURDATE()) AS days_left
@@ -30,7 +30,7 @@ if ($filter !== 'all') {
 $stmt->execute();
 $items = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Get user reminder_day for badge colors
+// Ambil preferensi pengingat user untuk menentukan warna badge status
 $stmt2 = $connection->prepare("SELECT reminder_day FROM users WHERE id = ?");
 $stmt2->bind_param("s", $user_id);
 $stmt2->execute();

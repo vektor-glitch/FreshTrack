@@ -6,14 +6,14 @@ $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 $page_title = 'Dashboard';
 
-// Get user's reminder_day preference
+// Ambil preferensi pengingat user (berapa hari sebelum kedaluwarsa ingin diingatkan)
 $stmt = $connection->prepare("SELECT reminder_day FROM users WHERE id = ?");
 $stmt->bind_param("s", $user_id);
 $stmt->execute();
 $user_data = $stmt->get_result()->fetch_assoc();
 $reminder_day = $user_data['reminder_day'] ?? 3;
 
-// Get all user inventories with category
+// Ambil semua bahan makanan user beserta kategorinya, urutkan berdasarkan tanggal kedaluwarsa
 $query = "SELECT i.*, c.nama_categories, c.icon,
           DATEDIFF(i.tanggal_kadaluarsa, CURDATE()) AS days_left
           FROM inventories i
@@ -25,7 +25,7 @@ $stmt->bind_param("s", $user_id);
 $stmt->execute();
 $inventories = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Calculate stats
+// Hitung statistik bahan makanan (total, aman, warning, kritis)
 $total = count($inventories);
 $safe = 0; $warning_count = 0; $critical = 0;
 $alerts = [];
@@ -42,7 +42,7 @@ foreach ($inventories as $item) {
     }
 }
 
-// Priority list (next 7 expiring items that are not yet expired)
+// Daftar prioritas: 7 bahan makanan yang paling cepat kedaluwarsa (belum expired)
 $priority = array_filter($inventories, fn($i) => $i['days_left'] >= 0);
 $priority = array_slice($priority, 0, 7);
 ?>
