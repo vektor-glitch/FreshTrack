@@ -39,7 +39,7 @@ unset($recipe);
             <?php $delay = 100; foreach ($recipes as $r): ?>
             <div onclick="openRecipe('<?= $r['id'] ?>')" class="group cursor-pointer bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300 animate-slide-up delay-<?= $delay ?>">
                 <div class="aspect-[16/9] w-full overflow-hidden bg-gray-200">
-                    <img src="https://picsum.photos/seed/<?= substr($r['id'],0,8) ?>/600/360" alt="<?= htmlspecialchars($r['judul']) ?>" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    <img src="../assets/<?= htmlspecialchars($r['gambar']) ?>" alt="<?= htmlspecialchars($r['judul']) ?>" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-5">
                     <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors"><?= htmlspecialchars($r['judul']) ?></h3>

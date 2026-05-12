@@ -57,3 +57,12 @@ Web manajemen inventaris rumah tangga yang dirancang khusus untuk menekan angka 
    - Pengguna dapat membaca kumpulan resep dadakan untuk menyelamatkan bahan makanan yang hampir kadaluarsa.
 4. Tracking Food Waste (Reporting Sederhana)
    - Pengguna dapat melihat jumlah bahan makanan yang berhasil diselamatkan (Sudah Dimasak) versus bahan yang membusuk (Dibuang) sebagai tolok ukur penghematan.
+
+   # LOGIN
+   Username : Vektor
+   Email : vektorino12@gmail.com
+   Password : vektordhaf1812
+
+   Username : Lintang
+   Email : lintangkinasih80@gmail.com
+   Password : lintangkin123
