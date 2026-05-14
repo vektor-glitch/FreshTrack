@@ -23,24 +23,24 @@ if (!isset($_SESSION['user_id'])) {
             $expiry = new DateTime($user['remember_token_expiry']);
 
             if ($user['remember_token'] && hash_equals($user['remember_token'], $hashed_token) && $now < $expiry) {
-                // Token valid, loginkan pengguna secara otomatis
+                // Token valid, auto-login user
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $user['username'];
             } else {
-                // Token tidak valid atau kedaluwarsa, hapus cookie
+                // Token invalid or expired, delete cookie
                 setcookie('remember_me', '', time() - 3600, "/");
-                header("Location: /Kuis-ResponsiPWD/FreshTrack/auth/login.php");
+                header("Location: /Kuis-ResponsiPWD/FreshTrack/index.php", true, 302);
                 exit();
             }
         } else {
-            // Pengguna tidak ditemukan, hapus cookie
+            // User not found, delete cookie
             setcookie('remember_me', '', time() - 3600, "/");
-            header("Location: /Kuis-ResponsiPWD/FreshTrack/auth/login.php");
+            header("Location: /Kuis-ResponsiPWD/FreshTrack/index.php", true, 302);
             exit();
         }
     } else {
-        // Tidak ada sesi dan tidak ada cookie, arahkan ke halaman login
-        header("Location: /Kuis-ResponsiPWD/FreshTrack/auth/login.php");
+        // No session and no cookie, redirect to index
+        header("Location: /Kuis-ResponsiPWD/FreshTrack/index.php", true, 302);
         exit();
     }
 }

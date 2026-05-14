@@ -3,7 +3,7 @@ require_once __DIR__ . '/../includes/auth_check.php';
 include __DIR__ . '/../config/connection.php';
 
 $user_id = $_SESSION['user_id'];
-$page_title = 'Bahan Makanan';
+$page_title = 'Ingredients';
 
 // Ambil semua kategori bahan makanan dari database
 $cats = $connection->query("SELECT * FROM categories ORDER BY nama_categories");
@@ -189,20 +189,20 @@ $error = $_GET['error'] ?? '';
             <i class="fas fa-plus text-emerald-600"></i>
           </div>
           <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Tambah Bahan Baru</h3>
+            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Add New Ingredient</h3>
             <div class="mt-4">
                 <form method="POST" action="/Kuis-ResponsiPWD/FreshTrack/actions/add_inventories.php" id="addForm" class="space-y-4">
                     <div>
-                        <label for="add_nama" class="block text-sm/6 font-medium text-gray-900">Nama Bahan</label>
+                        <label for="add_nama" class="block text-sm/6 font-medium text-gray-900">Ingredient Name</label>
                         <div class="mt-2">
-                            <input type="text" id="add_nama" name="nama_bahan" placeholder="cth: Bayam Hijau" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6">
+                            <input type="text" id="add_nama" name="nama_bahan" placeholder="e.g., Fresh Spinach" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6">
                         </div>
                     </div>
                     <div>
-                        <label for="add_cat" class="block text-sm/6 font-medium text-gray-900">Kategori</label>
+                        <label for="add_cat" class="block text-sm/6 font-medium text-gray-900">Category</label>
                         <div class="mt-2 grid grid-cols-1">
                             <select id="add_cat" name="category_id" required class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6">
-                                <option value="">-- Pilih Kategori --</option>
+                                <option value="">-- Select Category --</option>
                                 <?php foreach ($categories as $cat): ?>
                                 <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['nama_categories']) ?></option>
                                 <?php endforeach; ?>
@@ -213,7 +213,7 @@ $error = $_GET['error'] ?? '';
                         </div>
                     </div>
                     <div>
-                        <label for="add_exp" class="block text-sm/6 font-medium text-gray-900">Tanggal Kedaluwarsa</label>
+                        <label for="add_exp" class="block text-sm/6 font-medium text-gray-900">Expiration Date</label>
                         <div class="mt-2">
                             <input type="date" id="add_exp" name="tanggal_kadaluarsa" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6">
                         </div>
@@ -223,8 +223,8 @@ $error = $_GET['error'] ?? '';
           </div>
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-          <button type="button" onclick="document.getElementById('addForm').submit()" class="inline-flex w-full justify-center rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 sm:ml-3 sm:w-auto"><i class="fas fa-save mr-2 mt-0.5"></i> Simpan</button>
-          <button type="button" onclick="closeModal('addModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Batal</button>
+          <button type="button" onclick="document.getElementById('addForm').submit()" class="inline-flex w-full justify-center rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 sm:ml-3 sm:w-auto"><i class="fas fa-save mr-2 mt-0.5"></i> Save</button>
+          <button type="button" onclick="closeModal('addModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
         </div>
       </div>
     </div>
@@ -242,19 +242,19 @@ $error = $_GET['error'] ?? '';
             <i class="fas fa-edit text-indigo-600"></i>
           </div>
           <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Edit Bahan</h3>
+            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Edit Ingredient</h3>
             <div class="mt-4">
                 <form method="POST" action="/Kuis-ResponsiPWD/FreshTrack/actions/edit_inventories.php" id="editForm" class="space-y-4">
                     <input type="hidden" id="edit_id" name="id">
                     <input type="hidden" name="action" value="update">
                     <div>
-                        <label for="edit_nama" class="block text-sm/6 font-medium text-gray-900">Nama Bahan</label>
+                        <label for="edit_nama" class="block text-sm/6 font-medium text-gray-900">Ingredient Name</label>
                         <div class="mt-2">
                             <input type="text" id="edit_nama" name="nama_bahan" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                         </div>
                     </div>
                     <div>
-                        <label for="edit_cat" class="block text-sm/6 font-medium text-gray-900">Kategori</label>
+                        <label for="edit_cat" class="block text-sm/6 font-medium text-gray-900">Category</label>
                         <div class="mt-2 grid grid-cols-1">
                             <select id="edit_cat" name="category_id" required class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                 <?php foreach ($categories as $cat): ?>
@@ -267,7 +267,7 @@ $error = $_GET['error'] ?? '';
                         </div>
                     </div>
                     <div>
-                        <label for="edit_exp" class="block text-sm/6 font-medium text-gray-900">Tanggal Kedaluwarsa</label>
+                        <label for="edit_exp" class="block text-sm/6 font-medium text-gray-900">Expiration Date</label>
                         <div class="mt-2">
                             <input type="date" id="edit_exp" name="tanggal_kadaluarsa" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                         </div>
@@ -278,7 +278,7 @@ $error = $_GET['error'] ?? '';
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
           <button type="button" onclick="document.getElementById('editForm').submit()" class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto"><i class="fas fa-save mr-2 mt-0.5"></i> Update</button>
-          <button type="button" onclick="closeModal('editModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Batal</button>
+          <button type="button" onclick="closeModal('editModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
         </div>
       </div>
     </div>
@@ -296,9 +296,9 @@ $error = $_GET['error'] ?? '';
             <i class="fas fa-exclamation-triangle text-red-600"></i>
           </div>
           <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Hapus Item?</h3>
+            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Delete Item?</h3>
             <div class="mt-2">
-              <p class="text-sm text-gray-500">Yakin ingin menghapus <strong id="delete_name" class="text-gray-900"></strong>? Tindakan ini tidak dapat dibatalkan.</p>
+              <p class="text-sm text-gray-500">Are you sure you want to delete <strong id="delete_name" class="text-gray-900"></strong>? This action cannot be undone.</p>
               <form method="POST" action="/Kuis-ResponsiPWD/FreshTrack/actions/delete_inventories.php" id="deleteForm">
                   <input type="hidden" id="delete_id" name="id">
               </form>
@@ -306,8 +306,8 @@ $error = $_GET['error'] ?? '';
           </div>
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-          <button type="button" onclick="document.getElementById('deleteForm').submit()" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"><i class="fas fa-trash mr-2 mt-0.5"></i> Hapus</button>
-          <button type="button" onclick="closeModal('deleteModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Batal</button>
+          <button type="button" onclick="document.getElementById('deleteForm').submit()" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"><i class="fas fa-trash mr-2 mt-0.5"></i> Delete</button>
+          <button type="button" onclick="closeModal('deleteModal')" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
         </div>
       </div>
     </div>

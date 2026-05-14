@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (empty($email) || empty($password)) {
-        $error = 'Email dan password wajib diisi.';
+        $error = 'Email and password are required.';
     } else {
         $stmt = $connection->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: /Kuis-ResponsiPWD/FreshTrack/pages/dashboard.php");
                 exit();
             } else {
-                $error = 'Password salah.';
+                $error = 'Incorrect password.';
             }
         } else {
-            $error = 'Email tidak ditemukan.';
+            $error = 'Email not found.';
         }
     }
 }

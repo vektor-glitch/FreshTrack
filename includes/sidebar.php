@@ -53,7 +53,7 @@ $base = '/Kuis-ResponsiPWD/FreshTrack';
             </li>
             
             <li class="-mx-6 mt-auto">
-              <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Yakin ingin logout?')" class="flex items-center gap-x-4 px-6 py-3 text-sm/6 font-semibold text-white hover:bg-emerald-700 transition-colors">
+              <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Are you sure you want to logout?')" class="flex items-center gap-x-4 px-6 py-3 text-sm/6 font-semibold text-white hover:bg-emerald-700 transition-colors">
                 <i class="fas fa-sign-out-alt size-5 pt-1 text-emerald-200"></i>
                 <span aria-hidden="true">Logout</span>
               </a>
@@ -103,7 +103,7 @@ $base = '/Kuis-ResponsiPWD/FreshTrack';
           </ul>
         </li>
         <li class="-mx-6 mt-auto border-t border-emerald-500">
-          <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Yakin ingin logout?')" class="flex items-center gap-x-4 px-6 py-4 text-sm/6 font-semibold text-white hover:bg-emerald-700 transition-colors">
+          <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Are you sure you want to logout?')" class="flex items-center gap-x-4 px-6 py-4 text-sm/6 font-semibold text-white hover:bg-emerald-700 transition-colors">
             <i class="fas fa-sign-out-alt size-5 pt-0.5 text-emerald-200 group-hover:text-white"></i>
             <span aria-hidden="true">Logout</span>
           </a>
@@ -120,7 +120,7 @@ $base = '/Kuis-ResponsiPWD/FreshTrack';
     <i class="fas fa-bars text-xl"></i>
   </button>
   <div class="flex-1 text-sm/6 font-semibold text-white tracking-wide"><?= htmlspecialchars($page_title ?? 'FreshTrack') ?></div>
-  <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Yakin ingin logout?')">
+  <a href="<?= $base ?>/auth/logout.php" onclick="return confirm('Are you sure you want to logout?')">
     <span class="sr-only">Logout</span>
     <i class="fas fa-sign-out-alt text-emerald-100 hover:text-white text-lg"></i>
   </a>

@@ -2,7 +2,7 @@
 include __DIR__ . '/../config/connection.php';
 include __DIR__ . '/../includes/auth_check.php';
 
-$page_title = 'Resep Dadakan';
+$page_title = 'Quick Recipes';
 
 // Ambil semua resep beserta bahan-bahannya dari database
 $recipes = $connection->query("SELECT * FROM recipe ORDER BY created_at DESC")->fetch_all(MYSQLI_ASSOC);
@@ -23,7 +23,7 @@ unset($recipe);
       <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="mb-8">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900"><i class="fas fa-utensils text-emerald-600 mr-2"></i> Quick Recipes</h1>
-            <p class="mt-2 text-sm text-gray-600">Inspirasi resep cepat untuk menggunakan bahan yang mendekati kedaluwarsa.</p>
+            <p class="mt-2 text-sm text-gray-600">Quick recipe inspiration to use ingredients approaching expiration.</p>
         </div>
 
         <?php if (empty($recipes)): ?>

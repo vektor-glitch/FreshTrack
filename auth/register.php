@@ -17,27 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm = $_POST['confirm_password'] ?? '';
 
     if (empty($username) || empty($email) || empty($password) || empty($confirm)) {
-        $error = 'Semua field wajib diisi.';
+        $error = 'All fields are required.';
     } elseif ($password !== $confirm) {
-        $error = 'Password dan konfirmasi password tidak cocok.';
+        $error = 'Password and confirmation password do not match.';
     } elseif (strlen($password) < 6) {
-        $error = 'Password minimal 6 karakter.';
+        $error = 'Password must be at least 6 characters.';
     } else {
         // Check duplikasi email
         $stmt = $connection->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         if ($stmt->get_result()->num_rows > 0) {
-            $error = 'Email sudah terdaftar. Silakan login.';
+            $error = 'Email is already registered. Please login.';
         } else {
             $id = bin2hex(random_bytes(18));
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $stmt2 = $connection->prepare("INSERT INTO users (id, username, password_hash, email) VALUES (?, ?, ?, ?)");
             $stmt2->bind_param("ssss", $id, $username, $hash, $email);
             if ($stmt2->execute()) {
-                $success = 'Registrasi berhasil! Silakan login.';
+                $success = 'Registration successful! Please login.';
             } else {
-                $error = 'Terjadi kesalahan. Coba lagi.';
+                $error = 'An error occurred. Please try again.';
             }
         }
     }

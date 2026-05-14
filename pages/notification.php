@@ -3,7 +3,7 @@ require_once __DIR__ . '/../includes/auth_check.php';
 include __DIR__ . '/../config/connection.php';
 
 $user_id = $_SESSION['user_id'];
-$page_title = 'Pengaturan Notifikasi';
+$page_title = 'Notification Settings';
 $success = '';
 
 // Handle form submit
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $connection->prepare("UPDATE users SET reminder_day = ?, updated_at = NOW() WHERE id = ?");
     $stmt->bind_param("is", $reminder_day, $user_id);
     if ($stmt->execute()) {
-        $success = 'Pengaturan notifikasi berhasil disimpan!';
+        $success = 'Notification settings saved successfully!';
     }
 }
 
@@ -31,7 +31,7 @@ $current = $stmt->get_result()->fetch_assoc()['reminder_day'] ?? 3;
       <div class="px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
         <div class="mb-8">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900"><i class="fas fa-bell text-emerald-600 mr-2"></i> Notifications</h1>
-            <p class="mt-2 text-sm text-gray-600">Kelola pengaturan pengingat Anda untuk mencegah pemborosan makanan.</p>
+            <p class="mt-2 text-sm text-gray-600">Manage your reminder settings to prevent food waste.</p>
         </div>
 
         <?php if ($success): ?>

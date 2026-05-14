@@ -54,7 +54,7 @@ $priority = array_slice($priority, 0, 7);
         
         <div class="mb-8">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-            <p class="mt-2 text-sm/6 text-gray-600">Selamat datang kembali, <strong><?= htmlspecialchars($username) ?></strong>! 👋</p>
+            <p class="mt-2 text-sm/6 text-gray-600">Welcome back, <strong><?= htmlspecialchars($username) ?></strong>! 👋</p>
         </div>
 
         <!-- Notification Banner -->
@@ -66,7 +66,7 @@ $priority = array_slice($priority, 0, 7);
             </div>
             <div class="ml-3">
               <p class="text-sm font-medium <?= $alerts[0]['days_left'] <= 1 ? 'text-red-800' : 'text-yellow-800' ?>">
-                ⚠️ Ada <strong><?= count($alerts) ?></strong> bahan makanan yang mendekati/melewati kedaluwarsa! Segera cek inventaris Anda.
+                ⚠️ There are <strong><?= count($alerts) ?></strong> items approaching or past expiration! Please check your inventory.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ $priority = array_slice($priority, 0, 7);
               <div class="absolute rounded-xl bg-blue-100 p-3">
                 <i class="fas fa-box text-blue-600 size-6 text-center text-xl"></i>
               </div>
-              <p class="ml-16 truncate text-sm font-medium text-gray-500">Total Bahan</p>
+              <p class="ml-16 truncate text-sm font-medium text-gray-500">Total Items</p>
             </dt>
             <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p class="text-2xl font-semibold text-gray-900"><?= $total ?></p>
@@ -92,7 +92,7 @@ $priority = array_slice($priority, 0, 7);
               <div class="absolute rounded-xl bg-emerald-100 p-3">
                 <i class="fas fa-check-circle text-emerald-600 size-6 text-center text-xl"></i>
               </div>
-              <p class="ml-16 truncate text-sm font-medium text-gray-500">Aman</p>
+              <p class="ml-16 truncate text-sm font-medium text-gray-500">Safe</p>
             </dt>
             <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p class="text-2xl font-semibold text-gray-900"><?= $safe ?></p>
@@ -104,7 +104,7 @@ $priority = array_slice($priority, 0, 7);
               <div class="absolute rounded-xl bg-yellow-100 p-3">
                 <i class="fas fa-clock text-yellow-600 size-6 text-center text-xl"></i>
               </div>
-              <p class="ml-16 truncate text-sm font-medium text-gray-500">Mendekati Batas</p>
+              <p class="ml-16 truncate text-sm font-medium text-gray-500">Approaching Expiration</p>
             </dt>
             <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p class="text-2xl font-semibold text-gray-900"><?= $warning_count ?></p>
@@ -116,7 +116,7 @@ $priority = array_slice($priority, 0, 7);
               <div class="absolute rounded-xl bg-red-100 p-3">
                 <i class="fas fa-exclamation-circle text-red-600 size-6 text-center text-xl"></i>
               </div>
-              <p class="ml-16 truncate text-sm font-medium text-gray-500">Kritis / Expired</p>
+              <p class="ml-16 truncate text-sm font-medium text-gray-500">Critical / Expired</p>
             </dt>
             <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p class="text-2xl font-semibold text-gray-900"><?= $critical ?></p>
@@ -128,14 +128,14 @@ $priority = array_slice($priority, 0, 7);
         <div class="bg-white shadow-sm border border-gray-200 sm:rounded-xl">
           <div class="border-b border-gray-200 px-4 py-5 sm:px-6 flex items-center gap-2">
             <i class="fas fa-fire text-red-500"></i>
-            <h3 class="text-base font-semibold text-gray-900">Prioritas Segera Digunakan</h3>
+            <h3 class="text-base font-semibold text-gray-900">Items to Use Soon</h3>
           </div>
           
           <?php if (empty($priority)): ?>
           <div class="text-center py-12">
             <i class="fas fa-leaf text-gray-300 text-4xl mb-3"></i>
-            <h3 class="text-sm font-semibold text-gray-900">Belum ada bahan makanan</h3>
-            <p class="mt-1 text-sm text-gray-500">Tambahkan bahan makanan pertama Anda di halaman Inventaris.</p>
+            <h3 class="text-sm font-semibold text-gray-900">No ingredients</h3>
+            <p class="mt-1 text-sm text-gray-500">Add your first ingredient on the Inventory page.</p>
           </div>
           <?php else: ?>
           <ul role="list" class="divide-y divide-gray-200">
